@@ -4,18 +4,18 @@
 @section('container')
 
 <div align="right" class="container">
-    <a href="/masterbahan/input" class="btn btn-primary">Input</a>
+    <a href="/masterlokasi/forminput" class="btn btn-primary">Input</a>
 </div>
 
 <center>
 
     <div class="container">
-        <form action="/masterbahan/search" method="POST">
+        <form action="/masterlokasi/search" method="POST">
             @csrf
         <div class="row">
             <div class="">
-                <h4 align=left>Pencarian Part</h4>
-                <input type="text" name="part_number" class="form-control" placeholder="Silahkan Masukkan Kode Lokasi, Misal KRPY"  value="{{ old('part_number') ?? $input ?? '' }}">
+                <h4 align=left>Pencarian Lokasi</h4>
+                <input type="text" name="namalokasi" class="form-control" placeholder="Silahkan Masukkan Nama Lokasi, Misal HIT Kudus"  value="{{ old('namalokasi') ?? $input ?? '' }}">
             </div>
         </br>
             <div class="">
@@ -46,10 +46,10 @@
                             <td>{{ $data->kodelokasi}}</td>
                             <td>{{ $data->namalokasi}}</td>
                             <td>
-                                <a href="/masterbahan/{{ $data->id }}" class="btn btn-info">edit</a>
+                                <a href="/masterlokasi/{{ $data->id }}" class="btn btn-info">edit</a>
                             </td>
                             <td>
-                                <form action="/masterbahan/{{ $data->id }}" method="post"  class="d-inline">
+                                <form action="/masterlokasi/{{ $data->id }}" method="post"  class="d-inline">
                                     @method('delete')
                                     @csrf
                                 <button type="submit" class="btn btn-danger">Delete</button>

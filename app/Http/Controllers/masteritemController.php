@@ -53,7 +53,7 @@ class masteritemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         $masteritem = masteritem::where('kodebarang','LIKE','%'.$request->kodebarang.'%')->get();
         return view('masteritem.index', ['masteritem' => $masteritem, 'input' => $request->kodebarang]);

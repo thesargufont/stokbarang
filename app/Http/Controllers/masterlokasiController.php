@@ -26,7 +26,7 @@ class masterlokasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('masterlokasi.input');
     }
 
     /**
@@ -37,7 +37,13 @@ class masterlokasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'kodelokasi' => 'required',
+            'namalokasi' => 'required'
+        ]);
+
+        masterlokasi::create($validated);
+        return redirect('/masterlokasi');
     }
 
     /**
@@ -46,9 +52,10 @@ class masterlokasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $masterlokasi = masterlokasi::where('namalokasi','LIKE','%'.$request->namalokasi.'%')->get();
+        return view('masterlokasi.index', ['masterlokasi' => $masterlokasi, 'input' => $request->namalokasi]);
     }
 
     /**
@@ -59,7 +66,8 @@ class masterlokasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = masterlokasi::All()->firstWhere('id', $id);
+        return view('masterlokasi.edit', ['masterlokasi' => $data]);
     }
 
     /**
@@ -71,7 +79,12 @@ class masterlokasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        masterlokasi::where('id', $id)
+            ->update ([
+                'kodelokasi' => $request->kodelokasi,
+                'namalokasi' => $request->namalokasi
+            ]);
+            return redirect('/masterlokasi');
     }
 
     /**
@@ -82,6 +95,7 @@ class masterlokasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        masterlokasi::destroy('id', $id);
+        return redirect('/masterlokasi');
     }
 }

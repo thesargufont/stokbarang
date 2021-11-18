@@ -1,6 +1,6 @@
 @extends('layout/header')
 
-@section('title', 'Form Edit')
+@section('title', 'Edit Bahan')
 @section('container')
 
 <center>
