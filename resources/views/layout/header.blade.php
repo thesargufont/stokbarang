@@ -47,9 +47,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transaction<span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li><a href="/masterbahan">Check In</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="/masterbahan/input">Check Out</a></li>
+          <li><a href="/transaction">Create</a></li>
           <li role="separator" class="divider"></li>
           </ul>
         </li>
@@ -62,6 +60,16 @@
           <li role="separator" class="divider"></li>
           </ul>
         </li>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Cek Login <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a>Login</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href=""><i class="fa fa-power-off"></i> Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

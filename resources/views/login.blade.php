@@ -8,32 +8,59 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <center>
     <div class="container"><br>
         <div class="col-md-4 col-md-offset-4">
-            <h2 class="text-center"><b>Sistem Aplikasi Stok Barang</b>
-                <hr><br>
-                @if(session('error'))
-                <div class="alert alert-danger">
-                    <b>Opps!</b> {{session('error')}}
-                </div>
-                @endif
-                {{-- <form action="{{ route('actionlogin') }}" method="post"> --}}
-                <h4>Silahkan Login :</h4>
-                <form action="" method="post">
-            @csrf
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Email" required="">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                <hr>
-                <p class="text-center">Belum punya akun? <a href="#">Register</a> sekarang!</p>
-            </form>
+        <h2 class="text-center"><b>Registrasi Sistem Aplikasi Stok Barang</b>
+        <br><hr> 
+
+         @if (session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+
+          @if (session()->has('loginError'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('loginError') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+
+            <main class="form-signin">
+                <h4 align="left" class="">Silahkan Login :</h4>
+                <form action="/login" method="post">
+                  @csrf
+                  <div class="form-floating">
+                      <label for="username"></label>
+                    <input type="text" name="username" class="form-control @error('username')is-invalid @enderror" id="username"
+                     placeholder="username" required value={{ old('username') }}>
+                    @error('username')
+                    <div class="invalid-feedback">
+                       {{$message}}
+                    </div>
+                    @enderror
+                  </div>
+
+                  <div class="form-floating">
+                    <input type="password" name="password"class="form-control @error('password') is-invalid
+                    @enderror"
+                    id="password" placeholder="Password">
+                    <label for="password"></label>
+                    @error('password')
+                    <div class="invalid-feedback">
+                       {{$message}}
+                    </div>
+                    @enderror
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                </form>
+              </main>
         </div>
     </div>
+        <p class="text-center">Belum punya akun? <a href="/register">Register</a> sekarang!</p>
+    </center>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 use App\masteritem;
 use App\masterlokasi;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,6 +34,20 @@ class DatabaseSeeder extends Seeder
         masterlokasi::create([
             'kodelokasi' => 'SAYG',
             'namalokasi' => 'HIT Sayung'
+        ]);
+
+        User::create([
+            'name' => 'Thesar Gufont',
+            'username' => 'thesargufont',
+            'email' => 'thesargufont@gmail.com',
+            'password' => '12345678'
+        ]);
+
+        User::create([
+            'name' => 'Samuel Indra',
+            'username' => 'samuel',
+            'email' => 'samuelindra@gmail.com',
+            'password' => 'qazwsxedc'
         ]);
     
     }

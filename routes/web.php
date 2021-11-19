@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\loginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,8 +12,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/', function () {return view('login');});
 Route::get('/', function () {return view('home');});
+
+// Route::get('/', function () {return view('home');})->middleware('auth');
+
+// //Login
+// Route::get('/login',[loginController::class,'index'])->name('login')->middleware('guest');
+// Route::post('/login',[loginController::class,'authenticate']);
+// Route::post('/logout',[loginController::class,'logout']);
+
+// //register
+// Route::post('/register','registerController@store');
+// Route::get('/register','registerController@index')->middleware('guest');
 
 //Master  Item
 Route::get('/masteritem', 'masteritemController@index');
@@ -39,4 +51,7 @@ Route::get('/masterlokasi', 'masterlokasiController@index');
     Route::patch('/masterlokasi/{id}', 'masterlokasiController@update');
     //delete
     Route::delete('/masterlokasi/{id}', 'masterlokasiController@destroy');
+
+//Transaction
+Route::get('/transaction', 'transactionController@index');
 
